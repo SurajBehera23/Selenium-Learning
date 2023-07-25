@@ -1,16 +1,3 @@
-# import time
-#
-# from selenium import webdriver
-# from selenium.webdriver.chrome.service import Service as ChromeService
-# from webdriver_manager.chrome import ChromeDriverManager
-#
-# driver = webdriver.Chrome()
-# driver.get("https://www.google.com")
-# time.sleep(5)
-# driver.close()
-# driver.quit()
-
-
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -30,7 +17,14 @@ options.add_experimental_option("detach", True)
 # Create a ChromeDriver instance
 driver = webdriver.Chrome(service=Service(chrome_driver_path), options=options)
 
-driver.get("https://www.google.com")
-time.sleep(2)
-driver.close()
-driver.quit()
+driver.maximize_window()
+driver.get("https://saakh.naapbooks.com/login")
+inputNumber=driver.find_element(By.XPATH,"//input[@class='ant-input ant-input-lg css-yp8pcc']")
+inputNumber.send_keys("8093479088")
+time.sleep(1)
+driver.find_element(By.XPATH,"//button[@class='sc-ewnqHT lkZuBY']").click()
+time.sleep(3)
+driver.find_element(By.XPATH,"//input[@name='otp1']").send_keys("123456")
+time.sleep(1)
+driver.find_element(By.XPATH,"//button[@class='sc-ewnqHT lkZuBY']").click()
+time.sleep(1)
