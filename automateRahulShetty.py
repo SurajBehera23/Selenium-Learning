@@ -1,3 +1,5 @@
+import time
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -18,4 +20,5 @@ driver.find_element(By.XPATH,"//input[@value='Submit']").click()
 print(driver.find_element(By.CLASS_NAME,"alert-success").text)
 
 time.sleep(2)
+driver.minimize_window()
 # driver.close()

@@ -11,7 +11,9 @@ service_obj = Service("C:\chromedriver.exe")
 driver = webdriver.Chrome(service=service_obj, options=chrome_options)
 
 driver.maximize_window()
-driver.get("https://saakh.naapbooks.com/login")
+
+a="https://saakh.naapbooks.com/login"
+driver.get(a)
 print(driver.current_url)
 print(driver.title)
 driver.find_element(By.XPATH,"//input[@name='mobileNO']").send_keys("8093479088")
