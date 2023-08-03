@@ -11,8 +11,8 @@ chrome_options.add_experimental_option("detach", True)
 service_obj = Service("C:\chromedriver.exe")
 driver = webdriver.Chrome(service=service_obj, options=chrome_options)
 
-driver.get("https://rahulshettyacademy.com/AutomationPractice/")
 driver.maximize_window()
+driver.get("https://rahulshettyacademy.com/AutomationPractice/")
 getvalues = driver.find_elements(By.XPATH, "//input[@type='checkbox']")
 print(len(getvalues))
 for singlevalue in getvalues:
@@ -21,10 +21,15 @@ for singlevalue in getvalues:
         assert singlevalue.is_selected()
         break
 
-getradio=driver.find_elements(By.XPATH,"//input[@type='radio']")
+getradio = driver.find_elements(By.XPATH, "//input[@type='radio']")
 
 print(len(getradio))
 for allradio in getradio:
-    if allradio.get_attribute("value")=="radio3":
+    if allradio.get_attribute("value") == "radio3":
         allradio.click()
         break
+print(driver.find_element(By.ID, "displayed-text").is_displayed())
+
+driver.find_element(By.ID,"hide-textbox").click()
+
+assert not driver.find_element(By.ID, "displayed-text").is_displayed()
