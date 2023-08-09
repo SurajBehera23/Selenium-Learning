@@ -17,17 +17,17 @@ driver.get("https://rahulshettyacademy.com/seleniumPractise/#/")
 driver.find_element(By.XPATH, "//input[@placeholder='Search for Vegetables and Fruits']").send_keys("on")
 time.sleep(2)
 
-add_cart = driver.find_elements(By.XPATH, "//div[@class='products']/div")
+add_cart = driver.find_elements(By.XPATH, "//div[@class='products']/div")#storing all the searched produsts which are displayed in a variable
 print(len(add_cart))
-
-for clickadd in add_cart:
+for clickadd in add_cart:#Using for loop in the searched product list to click on all the add to cart button
     clickadd.find_element(By.XPATH,"div/button").click()
 
 driver.find_element(By.CSS_SELECTOR,"img[alt='Cart']").click()
 driver.find_element(By.XPATH,"//button[text()='PROCEED TO CHECKOUT']").click()
-# time.sleep(3)
+time.sleep(3)
 driver.find_element(By.XPATH,"//input[@type='text']").send_keys("rahulshettyacademy")
 driver.find_element(By.XPATH,"//button[@class='promoBtn']").click()
 # time.sleep(10)
 print(driver.find_element(By.CLASS_NAME,"promoInfo").text)
 driver.find_element(By.XPATH,"//button[normalize-space()='Place Order']").click()
+driver.close()

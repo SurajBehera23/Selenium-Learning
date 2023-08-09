@@ -17,6 +17,11 @@ driver = webdriver.Chrome(service=service_obj, options=chrome_options)
 driver.maximize_window()
 driver.implicitly_wait(5)
 driver.get("https://rahulshettyacademy.com/AutomationPractice/")
-action=ActionChains(driver)
-action.move_to_element(driver.find_element(By.ID,"mousehover")).perform()
-action.move_to_element(driver.find_element(By.LINK_TEXT,"Reload")).click().perform()
+# Create an ActionChains object to perform complex interactions with the WebDriver
+action = ActionChains(driver)
+
+# Move the cursor to the element with the specified ID "mousehover"
+action.move_to_element(driver.find_element(By.ID, "mousehover")).perform()
+
+# Move the cursor to the element with the specified LINK_TEXT "Reload" and then click it
+action.move_to_element(driver.find_element(By.LINK_TEXT, "Reload")).click().perform()

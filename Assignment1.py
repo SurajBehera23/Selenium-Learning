@@ -37,3 +37,4 @@ driver.find_element(By.ID,"signInBtn").click()
 gettext=driver.find_element(By.XPATH,"//div[@class='alert alert-danger col-md-12']").text
 print(gettext)
 assert gettext=="Empty username/password."
+
