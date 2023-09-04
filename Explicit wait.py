@@ -10,7 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 chrome_options = Options()
 chrome_options.add_experimental_option("detach", True)
-service_obj = Service("C:\chromedriver.exe")
+service_obj = Service()
 driver = webdriver.Chrome(service=service_obj, options=chrome_options)
 
 productList=["Onion - 1 Kg","Musk Melon - 1 Kg","Water Melon - 1 Kg","Almonds - 1/4 Kg"]

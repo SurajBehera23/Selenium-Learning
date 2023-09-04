@@ -8,7 +8,7 @@ from selenium.webdriver.support.select import Select
 
 chrome_options = Options()
 chrome_options.add_experimental_option("detach", True)
-service_obj = Service("C:\chromedriver.exe")
+service_obj = Service()
 driver = webdriver.Chrome(service=service_obj, options=chrome_options)
 
 name="Suraj"
