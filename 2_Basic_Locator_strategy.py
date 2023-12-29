@@ -5,6 +5,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 
 # Creating Chrome options
 chrome_options = Options()
@@ -22,14 +23,27 @@ driver = webdriver.Chrome(service=service_obj, options=chrome_options)
 driver.maximize_window()#maximizes driver window
 
 # Called the get method from webdriver class using the driver object
-driver.get("https://rahulshettyacademy.com/client/")
+driver.get("https://rahulshettyacademy.com/angularpractice/")
 
+# Input email
+driver.find_element(By.NAME, "email").send_keys("abc@gmail.com")
 
-print(driver.__getattribute__("title"))
-driver.find_element(By.LINK_TEXT, "Forgot password?").click()
-driver.find_element(By.XPATH, "//input[@type='email']").send_keys("demo@gmail.com")
-driver.find_element(By.XPATH, "//input[@type='email']").clear()
-driver.find_element(By.XPATH, "//input[@type='email']").send_keys("demo@gmail.com")
-driver.find_element(By.XPATH, "//input[@id='userPassword']").send_keys("123456")
-driver.find_element(By.XPATH, "//input[@id='confirmPassword']").send_keys("123456")
-driver.find_element(By.XPATH, "//button[@type='submit']").click()
+# Input password
+driver.find_element(By.ID, "exampleInputPassword1").send_keys("123456")
+
+# Click the checkbox
+driver.find_element(By.ID, "exampleCheck1").click()
+
+# Input name
+driver.find_element(By.XPATH, "//input[@minlength='2']").send_keys("Suraj Kumar Behera")
+
+# Click submit
+driver.find_element(By.CSS_SELECTOR, "input[type='submit']").click()
+
+# Get and print success message
+get_success_message_text = driver.find_element(By.XPATH, "//div[@class='alert alert-success alert-dismissible']").text
+print(get_success_message_text)
+
+# Assert success message
+assert "The Form has been submitted successfully!." in get_success_message_text
+

@@ -22,14 +22,23 @@ driver = webdriver.Chrome(service=service_obj, options=chrome_options)
 driver.maximize_window()#maximizes driver window
 
 # Called the get method from webdriver class using the driver object
-driver.get("https://rahulshettyacademy.com/client/")
+driver.get("https://www.google.com") #.get is a method here
 
 
-print(driver.__getattribute__("title"))
-driver.find_element(By.LINK_TEXT, "Forgot password?").click()
-driver.find_element(By.XPATH, "//input[@type='email']").send_keys("demo@gmail.com")
-driver.find_element(By.XPATH, "//input[@type='email']").clear()
-driver.find_element(By.XPATH, "//input[@type='email']").send_keys("demo@gmail.com")
-driver.find_element(By.XPATH, "//input[@id='userPassword']").send_keys("123456")
-driver.find_element(By.XPATH, "//input[@id='confirmPassword']").send_keys("123456")
-driver.find_element(By.XPATH, "//button[@type='submit']").click()
+# Get the title of the current webpage and store it in the variable
+get_the_title = driver.title #.title is a property here
+
+# Print the title to the console
+print(get_the_title)
+
+driver.refresh() #refreshes the page
+
+driver.minimize_window() #minimizes driver window
+
+driver.maximize_window()
+
+# Adding a delay of 2 seconds using the 'time' module
+time.sleep(2)
+
+# Closing the browser window
+driver.close()
