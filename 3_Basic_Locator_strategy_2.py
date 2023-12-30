@@ -5,6 +5,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 
 # Creating Chrome options
 chrome_options = Options()
@@ -19,17 +20,18 @@ service_obj = Service()
 # Here we have created object from webdriver class to access methods present in the class
 driver = webdriver.Chrome(service=service_obj, options=chrome_options)
 
-driver.maximize_window()#maximizes driver window
+driver.maximize_window()  # maximizes driver window
 
 # Called the get method from webdriver class using the driver object
 driver.get("https://rahulshettyacademy.com/client/")
 
+driver.find_element(By.LINK_TEXT, "Forgot password?").click()  # Used the title text presnt on link as a value
+driver.find_element(By.XPATH, "//form/div[1]/input").send_keys(
+    "demo@gmail.com")  # Used the tag names and its index value
+driver.find_element(By.CSS_SELECTOR, "form div:nth-child(2) input").send_keys(
+    "Hello@1234")  # Used the tag names and its index value
+driver.find_element(By.CSS_SELECTOR, "#confirmPassword").send_keys(
+    "Hello@1234")  # Used relative css value,syntax=#id attribute
+driver.find_element(By.XPATH, "//button[text()='Save New Password']").click()  # Used text present on the button
 
-print(driver.__getattribute__("title"))
-driver.find_element(By.LINK_TEXT, "Forgot password?").click()
-driver.find_element(By.XPATH, "//input[@type='email']").send_keys("demo@gmail.com")
-driver.find_element(By.XPATH, "//input[@type='email']").clear()
-driver.find_element(By.XPATH, "//input[@type='email']").send_keys("demo@gmail.com")
-driver.find_element(By.XPATH, "//input[@id='userPassword']").send_keys("123456")
-driver.find_element(By.XPATH, "//input[@id='confirmPassword']").send_keys("123456")
-driver.find_element(By.XPATH, "//button[@type='submit']").click()
+driver.close()
