@@ -21,6 +21,7 @@ driver.maximize_window()  # maximizes driver window
 
 driver.get("https://rahulshettyacademy.com/dropdownsPractise/")
 driver.find_element(By.XPATH, "//input[@id='autosuggest']").send_keys("ind")
+
 time.sleep(2)
 
 # findind list of country names from the autosuggest dropdown and storing in a variable
@@ -35,3 +36,5 @@ for country in country_list:
     if country.text == "India":
         country.click()
         break
+# checking and getting the value of inputted text via get attribute, here the input value is set on backend which we are getting via .get_attribute method
+assert driver.find_element(By.XPATH, "//input[@id='autosuggest']").get_attribute("value") == "fndia"
