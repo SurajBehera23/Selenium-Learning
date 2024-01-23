@@ -37,4 +37,4 @@ print(alertext)
 
 time.sleep(3)
 alert.dismiss() #click Cancel button
-driver.quit()
+# driver.quit()
