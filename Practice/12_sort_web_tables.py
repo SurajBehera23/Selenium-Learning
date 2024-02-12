@@ -22,5 +22,21 @@ driver = webdriver.Chrome(service=service_obj, options=chrome_options)
 
 driver.maximize_window()
 driver.implicitly_wait(5)
-driver.get("https://rahulshettyacademy.com/seleniumPractise/#/offers")
 
+driver.get("https://rahulshettyacademy.com/seleniumPractise/#/offers")
+driver.find_element(By.XPATH,"//span[text()='Veg/fruit name']").click() # click on title
+clicked_title_values=driver.find_elements(By.XPATH,"//td[1]")
+
+all_clicked_values=[] #got all the values from the loop
+
+for web_values in clicked_title_values:
+    all_clicked_values.append(web_values.text) #appending all values got, in to a list
+print(all_clicked_values)
+
+original_sorted_list=all_clicked_values.copy() #saving all sorted values to a variable before applying list sort
+
+all_clicked_values.sort()
+
+assert original_sorted_list==all_clicked_values # asserting values before and after applying sort method
+
+driver.quit()
